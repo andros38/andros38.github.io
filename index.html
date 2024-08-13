@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmad Asyhari</title>
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portofolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo.png">
+    
 </head>
 <body>
-  <header class="header">
-    <a href"#" class="logo">Ahmad Asyhari</a>
+    <div class="container active" id="container">
+        <header class="header">
+            <a href="img/logo.png" class="logo">Ahmad Asyhari</a>
 
-    <nav class="navbar">
-      <a href="#" class="active">Home</a>
-      <a href="#">Tentang</a>
-      <a href="#">Pelayanan</a>
-      <a href="#">Portofolio</a>
-      <a href="#">Kontak</a>
-    </nav>
+            <nav class="navbar">
+                <a href="#" class="active">Beranda</a>
+                <a href="https://sites.google.com/view/4ndrxd-portofolio/portofolio" class="#">Portofolio</a>
+                <!-- komentar
+                <a href="#" class="#">Tentang</a>
+                <a href="#" class="#">Contact</a>
+                -->
+            </nav>
 
-  </header>
+            <div class="toggle-icon">
+                <i class='bx bx-moon'></i>
+            </div>
+        </header>
 
-  <section class="home">
-    <div class="home-content">
-      <h1> Hai, Saya Ahmad</h1>
-      <h3> Hanya Seorang Mahasiswa</h3>
-      <p>saya adalah seorang mahasiswa tingkat akhir yang suka mempelajari 
-        tentang hal yang berbau teknologi. kemampuan saya masih dibawah 20% 
-        terhadap frontend maupun backend, saya tak berhenti untuk belajar mengenai 
-        teknologi baik itu berupa web ataupun info terkait teknologi lainnya. terima 
-        kasih telah mampir!
-      </p>
-      <div class="btn-box">
-        <a href="#job">Beri Pekerjaan</a>
-        <a href="#chat">Ayo Ngobrol</a>
-      </div>
+        <section class="home">
+            <div class="home-content">
+                <h3>Hai, Perkenalkan!</h3>
+                <h1>Saya Ahmad Asyhari</h1>
+                <h3>dan saya adalah <span>Editor Media</span></h3>
+                <p>yang mahir dalam menggunakan Adobe Premiere Pro dan sangat
+                    tertarik dengan seni visual. Saya selalu bersemangat untuk
+                    menciptakan karya yang estetis dan inovatif di bidang seni
+                    dan teknologi."
+                </p>
+                <div class="social-media">
+                    <a href="#"><i class='bx bxl-youtube' ></i></a>
+                    <a href="#"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#"><i class='bx bxl-github' ></i></a>
+                </div>
+                <a href="#" class="btn">Download CV</a>
+            </div>
+            <div class="home-img">
+                <img src="img/imgWhite.png" alt="#">
+            </div>
+        </section>
     </div>
-
-    <div class="home-sci">
-      <a href="https://www.youtube.com/channel/UC7s_NlVC1CbIYnlLA_5R74g" target="_blank"><i class='bx bxl-youtube' ></i></a>
-    </div>
-
-    <span class="home-imgHover">
-    </span>
-
-  </section>
+    <script src="script.js"></script>
 </body>
 </html>
