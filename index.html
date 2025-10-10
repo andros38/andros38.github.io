@@ -1,60 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Portofolio</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="img/logo.png">
-    
+    <title>Ahmad Asyhari - Portofolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Variabel Warna --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --text-primary: #E0E0E0;
+            --text-secondary: #B3B3B3;
+            --accent-color: #FFC107; /* Warna emas/kuning untuk aksen */
+            --border-color: #333333;
+        }
+
+        /* --- Gaya Dasar & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* --- Kontainer Utama --- */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* --- Tipografi --- */
+        h1, h2, h3 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- Header --- */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        /* --- Visi Kreatif (Cards) --- */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .vision-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- Keahlian (Skills) --- */
+        .skills-list {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .skills-list ul {
+            list-style: none;
+        }
+        .skills-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .skills-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- Portofolio (Tabel) --- */
+        .table-container {
+            overflow-x: auto; /* Agar tabel bisa di-scroll di HP */
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        tbody tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* --- Kontak --- */
+        .contact {
+            text-align: center;
+        }
+        .contact-links a {
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* --- Media Queries untuk Responsif --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <div class="container active" id="container">
+
+    <div class="container">
+
         <header class="header">
-            <a href="#" class="logo">Ahmad Asyhari</a>
-
-            <nav class="navbar">
-                <a href="#" class="active">Beranda</a>
-                <a href="https://sites.google.com/view/4ndrxd-portofolio/portofolio" class="#">Portofolio</a>
-                <a href="https://andros38.github.io/miniGame1" class="#">Mini Games</a>
-                <a href="https://andros38.github.io/gamecollection/" class="#">Game Kesukaan</a>
-                
-                <!-- komentar
-                <a href="#" class="#">Tentang</a>
-                <a href="#" class="#">Contact</a>
-                -->
-            </nav>
-
-            <div class="toggle-icon">
-                <i class='bx bx-moon'></i>
-            </div>
+            <h1>Ahmad Asyhari</h1>
+            <p class="subtitle">Seorang Editor Video dan hobi dalam mempelajari tentang teknologi terbaru</p>
         </header>
 
-        <section class="home">
-            <div class="home-content">
-                <h3>Hai, Perkenalkan!</h3>
-                <h1>Saya Ahmad Asyhari</h1>
-                <h3>dan saya adalah <span>Editor Media</span></h3>
-                <p>yang mahir dalam menggunakan Adobe Premiere Pro dan sangat
-                    tertarik dengan seni visual. Saya selalu bersemangat untuk
-                    menciptakan karya yang estetis dan inovatif di bidang seni
-                    dan teknologi
+        <main>
+            <section id="about">
+                <p>
+                    Halo, saya seorang Video Editor, Videografer, dan Fotografer. Saya suka mengubah rekaman mentah menjadi cerita visual yang menarik dan emosional.
                 </p>
-                <div class="social-media">
-                    <a href="#"><i class='bx bxl-youtube' ></i></a>
-                    <a href="#"><i class='bx bxl-instagram' ></i></a>
-                    <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                    <a href="#"><i class='bx bxl-github' ></i></a>
+                <p>
+                    Keseharian saya akrab dengan kamera dan Adobe Premiere Pro, dua alat utama saya untuk berkarya. Dari mulai syuting di lapangan sampai sentuhan akhir di editing, saya selalu terlibat di setiap langkahnya untuk memastikan hasilnya maksimal.
+                </p>
+            </section>
+
+            <section id="vision">
+                <h2>Visi Kreatif Saya</h2>
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <p>Bikin video yang nggak cuma lewat gitu aja di timeline. Aku ingin setiap karya yang kubuat punya 'nyawa', bisa bikin orang senyum, mikir, atau ngerasain sesuatu yang tulus.</p>
+                    </div>
+                    <div class="vision-card">
+                        <p>Aku percaya video terbaik lahir dari obrolan yang asyik. Aku ingin ngerti banget apa yang kamu mau sebelum mulai 'ngaduk-ngaduk' footage.</p>
+                    </div>
+                    <div class="vision-card">
+                        <p>Tentu, selesai tepat waktu itu wajib. Tapi buatku, hasil yang maksimal adalah prioritas utama.</p>
+                    </div>
                 </div>
-                <a href="#" class="btn">Download CV</a>
-            </div>
-            <div class="home-img">
-                <img src="img/imgWhite.png" alt="#">
-            </div>
-        </section>
+            </section>
+
+            <section id="skills">
+                <h2>Keahlian & Peralatan</h2>
+                <div class="skills-list">
+                    <ul>
+                        <li><strong>Video Editing:</strong> Mahir menggunakan <strong>Adobe Premiere Pro</strong> untuk penyuntingan, color grading, sound mixing, dan finalisasi proyek.</li>
+                        <li><strong>Videografi:</strong> Pengoperasian ahli <strong>kamera DSLR</strong> dan mirrorless, teknik pengambilan gambar sinematik, dan perekaman audio yang jernih.</li>
+                        <li><strong>Fotografi:</strong> Mampu menangkap momen penting dalam berbagai jenis fotografi, mulai dari acara, potret, hingga produk.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="portfolio">
+                <h2>Galeri Karya Saya</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 30px auto;">Berikut adalah beberapa video yang pernah saya hasilkan. Silakan klik tautan pada setiap baris untuk melihat video lengkapnya.</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Judul Proyek</th>
+                                <th>Jenis Pekerjaan</th>
+                                <th>Tautan Video</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td><strong>Video Profil Fakultas Hukum 2020</strong></td>
+                                <td>Videografer & Editor</td>
+                                <td><a href="https://drive.google.com/file/d/1LScXGhY62tOoav7zkkfJhK9EiUhrj_Cq/view?usp=sharing" target="_blank">Tonton di Sini</a></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td><strong>Film Pendek Jurusan Ilmu Komunikasi</strong></td>
+                                <td>Videografer & Editor</td>
+                                <td><a href="https://drive.google.com/file/d/1L8FTcSyEbviFaB7teQdl0MfcVLrClhIG/view?usp=sharing" target="_blank">Tonton di Sini</a></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td><strong>Short Video Potret Cerita</strong></td>
+                                <td>Video Editor</td>
+                                <td><a href="https://drive.google.com/file/d/1BfcRchRuUNid3jLwAvygLnTIs87h3J5Y/view?usp=sharing" target="_blank">Tonton di Sini</a></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td><strong>Selayang Pandang Polres Kota Tual</strong></td>
+                                <td>Video Editor</td>
+                                <td><a href="https://drive.google.com/file/d/1Cq_rKBD3nsGhU8sK7vBLXZG6T1yEa8ey/view?usp=sharing" target="_blank">Tonton di Sini</a></td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="contact" class="contact">
+                <h2>Tertarik untuk Mengajak Kerja?</h2>
+                <p>Jika Anda mencari partner kreatif untuk proyek video atau foto Anda selanjutnya, jangan ragu untuk menghubungi saya.</p>
+                <div class="contact-links">
+                    <a href="mailto:831ahmad.mywork@gmail.com">Email</a>
+                    <a href="https://www.tiktok.com/@androsproduction" target="_blank">Tiktok</a>
+                    <a href="https://www.linkedin.com/in/ahmdasyhr83" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/andros38" target="_blank">Github</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2020 Est. Ahmad Asyhari</p>
+        </footer>
+
     </div>
-    <script src="script.js"></script>
+
 </body>
 </html>
