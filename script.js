@@ -1,37 +1,43 @@
 'use strict';
+
+function initAndrosHomepage() {
+// Tambah atau hapus objek proyek di sini. Jangan hapus tanda [ ], dan pisahkan objek dengan koma.
 const projects = [
   {name:'SadarBudget Android',type:'Android App',image:'sadarbudget-android.png',repo:'SadarBudget-Android',desc:'Aplikasi pencatatan keuangan pribadi versi Android. Visual pada kartu ini hanya ilustrasi antarmuka.'},
   {name:'OrbitControl',type:'Android / Networking',image:'orbit-control.png',repo:'OrbitControl',desc:'Proyek alat bantu manajemen perangkat modem. Ilustrasi status koneksi di sini bukan tangkapan layar aplikasi asli.'},
   {name:'DexBridge',type:'Desktop Utility',image:'dex-bridge.png',repo:'DexBridge',desc:'Repositori pengembangan alat bantu desktop. Visual mockup digunakan sebagai placeholder.'},
   {name:'SoundRIP',type:'Web / Multimedia',image:'sound-rip.png',repo:'SoundRIP',desc:'Proyek alat bantu konversi video musik menjadi berkas audio.'},
-  {name:'MyDataset',type:'Data Tool',image:'my-dataset.png',repo:'MyDataset',desc:'Proyek pengumpulan data berbasis web. Tabel yang terlihat pada mockup hanyalah contoh.'},
-  {name:'SadarBudget Web',type:'Web Application',image:'project-03.svg',repo:'SadarBudget-PHP',desc:'Versi web dari aplikasi pencatatan keuangan pribadi SadarBudget.'},
-  {name:'Savings Goals',type:'Concept / SadarBudget',image:'project-07.svg',repo:'SadarBudget-Android',desc:'Eksplorasi visual dummy untuk area tabungan pada SadarBudget. Bukan proyek atau fitur baru yang telah diverifikasi.'},
-  {name:'Network Insights',type:'Concept / OrbitControl',image:'project-08.svg',repo:'OrbitControl',desc:'Eksplorasi visual dummy panel jaringan untuk konteks OrbitControl. Bukan tangkapan layar produk asli.'},
-  {name:'Monthly Reports',type:'Concept / SadarBudget',image:'project-09.svg',repo:'SadarBudget-PHP',desc:'Eksplorasi visual dummy untuk ringkasan laporan SadarBudget. Bukan bukti implementasi fitur.'}
+  {name:'MyDataset',type:'Data Tool',image:'my-dataset.png',repo:'MyDataset',desc:'Proyek pengumpulan data berbasis web. Tabel yang terlihat pada mockup hanyalah contoh.'}
 ];
 const grid=document.getElementById('projectGrid');
+const totalProjects = String(projects.length).padStart(2, '0');
 const svgIcon = (name) => `<svg aria-hidden="true"><use href="#icon-${name}"/></svg>`;
-projects.forEach((p,i)=>{
+if (!grid) {
+  console.error('[andros38] Elemen #projectGrid tidak ditemukan. Periksa index.html.');
+} else {
+  grid.replaceChildren();
+  projects.forEach((p,i)=>{
   const item=document.createElement('button'); item.className='project-card';item.type='button';item.setAttribute('aria-label',`Lihat detail ${p.name}`);item.dataset.index=i;
-  item.innerHTML=`<span class="project-thumb"><img src="assets/${p.image}" alt="Visual dummy untuk ${p.name}" width="1200" height="820" loading="lazy"><span class="project-hover-icon">${svgIcon('ext')}</span></span><span class="project-text"><span class="project-info"><strong>${p.name}</strong><small>${p.type}</small></span><span class="project-number">${String(i+1).padStart(2,'0')} / 09</span></span>`;
+  item.innerHTML=`<span class="project-thumb"><img src="assets/${p.image}" alt="Pratinjau ${p.name}" width="1200" height="820" loading="lazy"><span class="project-hover-icon">${svgIcon('ext')}</span></span><span class="project-text"><span class="project-info"><strong>${p.name}</strong><small>${p.type}</small></span><span class="project-number">${String(i+1).padStart(2,'0')} / ${totalProjects}</span></span>`;
   grid.appendChild(item);
 });
+}
 const dialog=document.getElementById('projectDialog');
 const closeDialog=document.getElementById('closeDialog');
-grid.addEventListener('click',e=>{
+grid?.addEventListener('click',e=>{
   const card=e.target.closest('.project-card');if(!card)return;
   const p=projects[Number(card.dataset.index)];
   document.getElementById('dialogImage').src=`assets/${p.image}`;
-  document.getElementById('dialogImage').alt=`Visual dummy ${p.name}`;
+  document.getElementById('dialogImage').alt=`Pratinjau ${p.name}`;
   document.getElementById('dialogTitle').textContent=p.name;
   document.getElementById('dialogTag').textContent=p.type;
   document.getElementById('dialogDescription').textContent=p.desc;
   document.getElementById('dialogLink').href=`https://github.com/andros38/${p.repo}`;
-  dialog.showModal();
+  if (dialog) dialog.showModal();
+  else console.error('[andros38] Elemen #projectDialog tidak ditemukan.');
 });
-closeDialog.addEventListener('click',()=>dialog.close());
-dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+closeDialog?.addEventListener('click',()=>dialog?.close());
+dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 
 const menuPanel=document.getElementById('menuPanel');
 const menuBackdrop=document.getElementById('menuBackdrop');
@@ -167,3 +173,12 @@ window.addEventListener('load', updateSectionOnScroll);
     revealObserver.observe(node);
   });
 })();
+
+}
+
+// Aman meskipun <script> kelak dipindah tanpa atribut defer.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAndrosHomepage, { once: true });
+} else {
+  initAndrosHomepage();
+}
